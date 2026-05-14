@@ -1,0 +1,39 @@
+---
+name: openai-agent-task
+description: Use this skill for OpenAI integration, agent orchestration, structured outputs, prompts, AgentRun logging, and AI-generated drafts.
+---
+
+# OpenAI Agent Task Skill
+
+## Required location
+
+OpenAI integration:
+
+```text
+backend/apps/integrations/openai/
+```
+
+Agents:
+
+```text
+backend/apps/agents/
+```
+
+## Workflow
+
+1. Define the business object being produced.
+2. Prefer structured output schema.
+3. Validate output before use.
+4. Persist significant runs in `AgentRun`.
+5. Route risky outputs through Policy Guard.
+6. Route approved actions through `ApprovalRequest`.
+7. Add tests with mocked OpenAI responses.
+
+## Rules
+
+- Do not parse free text when schema is needed.
+- Do not let AI bypass deterministic validation.
+- Do not send AI replies automatically in draft-first mode.
+- Do not invent product claims.
+- Do not invent OLX behavior.
+- Store prompt versions when behavior matters.
